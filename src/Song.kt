@@ -1,4 +1,4 @@
-class Song (
+open class Song (
     val titel: String = "",
     val interpret: String = "",
     val spieldauer: Int,
@@ -33,15 +33,37 @@ class Song (
     fun zuMinuten() =  spieldauer/60
 
     //spielt für jede minute einmal die Nachricht
-    fun abspielen(){
+    open fun abspielen(){
         for(a in 1..this.zuMinuten()) {
             println("Spiele $titel von $interpret (Bewertung: $bewertung Punkte)")
         }
     }
     //sucht im interpret und titel
-    fun suchen(suchbegriff:String): Boolean{
+    open fun suchen(suchbegriff:String): Boolean{
         return (titel.contains(suchbegriff,true) || interpret.contains(suchbegriff,true))
     }
-
-
 }
+class SongMitText(
+    titel: String = "",
+    interpret: String = "",
+    spieldauer: Int,
+    bewertung: Int,
+    val Textfeld: String
+) : Song (titel,interpret,spieldauer,bewertung){
+   override fun suchen(suchbegriff: String): Boolean{
+       return (titel.contains(suchbegriff,true) || interpret.contains(suchbegriff,true) || Textfeld.contains(suchbegriff,true))
+   }
+}
+class SongMitAutoBewertung(
+    titel: String = "",
+    interpret: String = "",
+    spieldauer: Int,
+    bewertung: Int
+    ): Song(titel,interpret, spieldauer, bewertung){
+    override fun abspielen(){
+        bewertung++
+        super.abspielen()
+    }
+}
+
+
