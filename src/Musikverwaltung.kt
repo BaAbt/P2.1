@@ -10,9 +10,9 @@ class Musikverwaltung(){
     fun hinzufuegen(song: Song) { songliste.add(song)}
 
     // sucht nach dem gegebenen Begriff in der songliste
-    fun suche(suchbegriff: String): Song {
+    fun suche(suchbegriff: String): Song? {
         songliste.onEach { if(it.suchen(suchbegriff))return it }
-        return songliste[0]
+        return null
     }
 
     // wählt den song mit der höchsten Bewertung aus
