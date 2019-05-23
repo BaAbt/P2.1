@@ -36,7 +36,7 @@ fun suchen(musikverwaltung: Musikverwaltung){
         if(eingabe.toLowerCase() == "stopp") {
             break
         }
-        musikverwaltung.suche(eingabe).abspielen()
+        musikverwaltung.suche(eingabe)?.abspielen()
     }while (true)
 
 }

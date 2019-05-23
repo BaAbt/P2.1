@@ -1,4 +1,4 @@
-class Song (
+open class Song (
     val titel: String,
     val interpret: String,
     val spieldauer: Int,
@@ -47,12 +47,13 @@ class Song (
     }
 }
 class SongMitText(
-    titel: String = "",
-    interpret: String = "",
+    titel: String ,
+    interpret: String ,
     spieldauer: Int,
     bewertung: Int,
     val Textfeld: String
 ) : Song (titel,interpret,spieldauer,bewertung){
+
    override fun suchen(suchbegriff: String): Boolean{
        return (titel.contains(suchbegriff,true) || interpret.contains(suchbegriff,true) || Textfeld.contains(suchbegriff,true))
    }
