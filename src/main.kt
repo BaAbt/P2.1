@@ -1,4 +1,5 @@
 
 fun main() {
-    termin2()
+    //termin2()
+    termin3()
 }
