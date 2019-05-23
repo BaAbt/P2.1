@@ -1,6 +1,7 @@
 import java.util.ArrayList
 
 class Playlist(val songliste: ArrayList<Song>){
+    //gibt die gesamtdauer an
     fun gesamtdauer(): Int{
        return songliste.sumBy { it.spieldauer }
     }
