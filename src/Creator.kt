@@ -1,14 +1,12 @@
 import java.util.*
 
-fun createMusikverwaltung():Musikverwaltung {
+fun createMusikverwaltung(songlistLaenge: Int = 20):Musikverwaltung {
     val musikverwaltung = Musikverwaltung()
     val song = arrayListOf<Song>()
-    val songlistLaenge = 20
     for (i in 0..songlistLaenge) {
         song.add(Song(getTitel(), getInterpret(), getTime(), getBewertugn()))
     }
     song.forEach { musikverwaltung.hinzufuegen(it) }
-
     return musikverwaltung
 }
 

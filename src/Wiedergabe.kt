@@ -2,9 +2,6 @@ import java.util.*
 //BonusAufgabe Übung 2
 
 class Wiedergabe(var aktPlay: Playlist, var aktMod:Modus){
-    var a = aktPlay.songliste.size
-
-
 
     fun changePlay(tempP:Playlist)   { aktPlay=tempP }
     fun changeModus(tempM:Modus)    { aktMod=tempM  }
@@ -17,14 +14,12 @@ class Wiedergabe(var aktPlay: Playlist, var aktMod:Modus){
           playNextSong()
        }
     }
+
     fun startStopResart(){
         playNextSong()
         currentSong = 0
         playNextSong()
     }
-
-
-
 
     companion object{
         var currentSong =0
@@ -32,7 +27,7 @@ class Wiedergabe(var aktPlay: Playlist, var aktMod:Modus){
             return when(aktMod){
                 Modus.einfacheWied -> {
                     if (aktPlay.returnSongAtIndex(currentSong)!=null){
-                       aktPlay.returnSongAtIndex(currentSong ++)
+                       return aktPlay.returnSongAtIndex(currentSong ++)
                     }
                     null
                 }
@@ -51,7 +46,6 @@ class Wiedergabe(var aktPlay: Playlist, var aktMod:Modus){
             }
         }
     }
-
 
 
     enum class Modus{
