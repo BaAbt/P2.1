@@ -27,7 +27,7 @@ class Wiedergabe(var aktPlay: Playlist, var aktMod:Modus){
             return when(aktMod){
                 Modus.einfacheWied -> {
                     if (aktPlay.returnSongAtIndex(currentSong)!=null){
-                       aktPlay.returnSongAtIndex(currentSong ++)
+                       return aktPlay.returnSongAtIndex(currentSong ++)
                     }
                     null
                 }

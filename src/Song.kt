@@ -36,6 +36,7 @@ open class Song (
 
     //spielt für jede minute einmal die Nachricht
     open fun abspielen(){
+        println(this)
         for(a in 1..this.zuMinuten()) {
             println("Spiele $titel von $interpret (Bewertung: $bewertung Punkte)")
         }
