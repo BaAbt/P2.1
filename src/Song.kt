@@ -1,21 +1,23 @@
 class Song (
-    val titel: String = "",
-    val interpret: String = "",
+    val titel: String,
+    val interpret: String,
     val spieldauer: Int,
     bewertung: Int
 )
 {
     companion object{
-        val MAX_BEW = 100
-        val MIN_BEW = 0
+        const val MAX_BEW = 100
+        const val MIN_BEW = 0
     }
 
     //setzt max und minimum auf MIN_BEW..MAX_BEW
     var bewertung: Int = MIN_BEW
         set(value) {
-            if( value < MIN_BEW) field = MIN_BEW
-            else if (value> MAX_BEW) field = MAX_BEW
-            else    field=value
+            field = when {
+                value < MIN_BEW -> MIN_BEW
+                value> MAX_BEW -> MAX_BEW
+                else -> value
+            }
         }
 
     //setzt die bewertung
@@ -38,10 +40,8 @@ class Song (
             println("Spiele $titel von $interpret (Bewertung: $bewertung Punkte)")
         }
     }
+
     //sucht im interpret und titel
-    fun suchen(suchbegriff:String): Boolean{
-        return (titel.contains(suchbegriff,true) || interpret.contains(suchbegriff,true))
-    }
-
-
+    fun suchen(suchbegriff:String): Boolean=
+        (titel.contains(suchbegriff,true) || interpret.contains(suchbegriff,true))
 }
