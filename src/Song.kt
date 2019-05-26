@@ -58,6 +58,10 @@ class SongMitText(
    override fun suchen(suchbegriff: String): Boolean{
        return (titel.contains(suchbegriff,true) || interpret.contains(suchbegriff,true) || Textfeld.contains(suchbegriff,true))
    }
+
+    override fun toString(): String {
+        return (super.toString() + "\nText: ${this.Textfeld}")
+    }
 }
 class SongMitAutoBewertung(
     titel: String = "",

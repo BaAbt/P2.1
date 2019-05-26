@@ -1,7 +1,7 @@
 import java.util.*
 //BonusAufgabe Übung 2
 
-class Wiedergabe(var aktPlay: Playlist, var aktMod:Modus){
+class Wiedergabe(private var aktPlay: Playlist, private var aktMod:Modus){
 
     fun changePlay(tempP:Playlist)   { aktPlay=tempP }
     fun changeModus(tempM:Modus)    { aktMod=tempM  }
@@ -9,6 +9,7 @@ class Wiedergabe(var aktPlay: Playlist, var aktMod:Modus){
         println(currentSong)
         nextSong(aktMod, aktPlay)?.abspielen()
     }
+
     fun playNextSongs(a:Int){
        for(i in 0..a){
           playNextSong()
@@ -25,13 +26,13 @@ class Wiedergabe(var aktPlay: Playlist, var aktMod:Modus){
         var currentSong =0
         fun nextSong(aktMod: Modus,aktPlay: Playlist): Song? {
             return when(aktMod){
-                Modus.einfacheWied -> {
+                Modus.EinfacheWied -> {
                     if (aktPlay.returnSongAtIndex(currentSong)!=null){
                        return aktPlay.returnSongAtIndex(currentSong ++)
                     }
                     null
                 }
-                Modus.endloseWied -> {
+                Modus.EndloseWied -> {
                     if (aktPlay.returnSongAtIndex(currentSong) != null) {
                         currentSong++
                     } else {
@@ -48,9 +49,10 @@ class Wiedergabe(var aktPlay: Playlist, var aktMod:Modus){
     }
 
 
+    //enum Klass um Modus festzustellen
     enum class Modus{
-        einfacheWied,
-        endloseWied,
+        EinfacheWied,
+        EndloseWied,
         ZufallWied
     }
 
