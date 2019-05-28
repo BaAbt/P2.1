@@ -5,11 +5,11 @@ fun termin3(){
 
     println("\n\nGesamtdauer: "+playlist2.gesamtdauer())
     playlist2.spieleAlle()
-    playlist2.songEntnehmen()
-    playlist2.songEntnehmen()
+    playlist2.getFirstSong()
+    playlist2.getFirstSong()
     println("\n\nGesamtdauer: "+playlist2.gesamtdauer())
     playlist2.spieleAlle()
-    playlist2.zuruecksetzen()
+    playlist2.reset()
     println("\n\nGesamtdauer: "+playlist2.gesamtdauer())
     playlist2.spieleAlle()
 
