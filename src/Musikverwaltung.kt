@@ -5,7 +5,9 @@ import kotlin.collections.ArrayList
  * Klasse Musikverwaltung, welche alle Songs, und playlist organisiert und in der man suchen kann
  **/
 class Musikverwaltung(){
+
     var songliste = arrayListOf<Song>()
+
     // fügt einen Song so songliste hinzu
     fun hinzufuegen(song: Song) { songliste.add(song)}
 

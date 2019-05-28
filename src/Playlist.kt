@@ -1,12 +1,18 @@
 import java.util.ArrayList
 
 open class Playlist(val songliste: ArrayList<Song>){
+
+    //returns gesamtdauer
     open fun gesamtdauer(): Int{
         return songliste.sumBy { it.spieldauer }
     }
+
+    //spiele alle lieder ab
     open fun spieleAlle(){
         songliste.forEach { it.abspielen() }
     }
+
+    //gibt die anzahl der lieder mit minimaler score an
     fun songsMitBewertung(a:Int):Int{
         var anzahl = 0
         songliste.forEach { if(it.bewertung>a)anzahl++  }
@@ -43,6 +49,8 @@ class DynamicPlaylist(songliste: ArrayList<Song>): Playlist(songliste) {
 
         }
     }
+
+    //entnimmt den ersten song
     fun songEntnehmen(){
         if(first == null){
             println("Entnehmen gescheitert, liste ist leer")
@@ -51,10 +59,14 @@ class DynamicPlaylist(songliste: ArrayList<Song>): Playlist(songliste) {
             first = first!!.nextSong
         }
     }
+
+    //setzt die playlist zurück
     fun zuruecksetzen(){
         first= null
         songliste.forEach{songHinzufuegen(it)}
     }
+
+    //gibt die gesamtdauer an
     override fun gesamtdauer(): Int{
         var i:SongNode? = first
         var a =0

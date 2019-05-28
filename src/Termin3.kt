@@ -3,9 +3,6 @@ fun termin3(){
     val playlist1 = musikverwaltung.zufaelligePlaylist()
     val playlist2 = DynamicPlaylist(playlist1.songliste)
 
-
-
-
     println("\n\nGesamtdauer: "+playlist2.gesamtdauer())
     playlist2.spieleAlle()
     playlist2.songEntnehmen()
@@ -15,4 +12,10 @@ fun termin3(){
     playlist2.zuruecksetzen()
     println("\n\nGesamtdauer: "+playlist2.gesamtdauer())
     playlist2.spieleAlle()
+
+    println("\n\nErstelle SongmitText")
+    val song = SongMitText(getTitel(),getInterpret(),getTime(),getBewertung(), getText())
+    musikverwaltung.hinzufuegen(song)
+    println(musikverwaltung.suche("Lorem ipsum"))
+
 }
