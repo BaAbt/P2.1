@@ -1,13 +1,21 @@
 import java.util.ArrayList
 
-class DynamicPlaylist(songliste: ArrayList<Song>): Playlist(songliste) {
-    init{
-        songliste.forEach{addSong(it)}
-    }
+class DynamicPlaylist(songliste: ArrayList<Song>): Playlist(songliste), Iterable<Song>{
+
     private var first: SongNode? = null
     private var last: SongNode? = null
 
-    fun addSong (s: Song){
+    init{
+        createDynList(songliste)
+    }
+
+    private fun createDynList(list:ArrayList<Song>){
+        first = null
+        list.forEach{addSong(it)}
+        println("\n")
+    }
+
+    private fun addSong (s: Song){
         if (first == null){
             val newSongNode =SongNode(null,s)
             first = newSongNode
@@ -18,9 +26,9 @@ class DynamicPlaylist(songliste: ArrayList<Song>): Playlist(songliste) {
             last?.nextSong = newSongNode
             last = newSongNode
             println("Hinzugefügt: "+ newSongNode.song)
-
         }
     }
+
 
     //entnimmt den ersten song
     fun getFirstSong(){
@@ -34,8 +42,7 @@ class DynamicPlaylist(songliste: ArrayList<Song>): Playlist(songliste) {
 
     //setzt die playlist zurück
     fun reset(){
-        first= null
-        songliste.forEach{addSong(it)}
+        createDynList(songliste)
     }
 
     //gibt die gesamtdauer an
@@ -48,7 +55,6 @@ class DynamicPlaylist(songliste: ArrayList<Song>): Playlist(songliste) {
         }
         return a
     }
-
     override fun spieleAlle() {
         println("\n\nspiele alle Songs ab: \n\n")
         var i:SongNode? = first
@@ -58,4 +64,57 @@ class DynamicPlaylist(songliste: ArrayList<Song>): Playlist(songliste) {
         }
     }
     inner class SongNode(var nextSong:SongNode?, var song: Song)
+
+
+    override fun iterator(): Iterator<Song> {
+        return object: Iterator<Song> {
+            private var run = first
+            override fun hasNext(): Boolean {
+                return (run?.nextSong != null)
+            }
+            override fun next(): Song {
+                val temp = run?.song ?: throw NoSuchElementException()
+                run = run?.nextSong ?: throw NoSuchElementException()
+                return temp
+            }
+        }
+    }
+
+
+
+
+
+
+    //bonusaufgabe
+    fun getAllSongs():ArrayList<Song>{
+        val list = arrayListOf<Song>()
+        var i:SongNode? = first
+        while(i!= null){
+            list.add(i.song)
+            i = i.nextSong
+        }
+        return list
+    }
+
+    fun myPlayAll(){
+        getAllSongs().forEach { println(it) }
+    }
+
+    fun addSorted(song: Song, comp:Comparator<Song>){
+        addSong(song)
+        val templist = getAllSongs()
+        templist.sortWith(comp)
+        createDynList(templist)
+    }
+}
+
+class SortByBew(): Comparator<Song>{
+    override fun compare(p0: Song?, p1: Song?): Int {
+        return (p0?.bewertung ?: 0) - (p1?.bewertung ?: 0)
+    }
+}
+class SortByName(): Comparator<Song>{
+    override fun compare(p0: Song?, p1: Song?): Int {
+        return (p0?.titel?.compareTo(p1?.titel?:"")?: 0)
+    }
 }

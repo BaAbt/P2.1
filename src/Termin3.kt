@@ -1,7 +1,16 @@
 fun termin3(){
+    //live
+    println("liveaufgabe\n")
+    liveaufgabe3()
+    readLine()
+
+
     val musikverwaltung = createMusikverwaltung(10)
     val playlist1 = musikverwaltung.zufaelligePlaylist()
     val playlist2 = DynamicPlaylist(playlist1.songliste)
+
+    bonusaufgabe3(playlist2)
+
 
     println("\n\nGesamtdauer: "+playlist2.gesamtdauer())
     playlist2.spieleAlle()

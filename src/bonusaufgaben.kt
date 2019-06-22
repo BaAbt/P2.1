@@ -23,3 +23,14 @@ fun bonusaufgabe2(playlist: Playlist) {
     readLine()
     w1.changePlay(playlist)
 }
+fun bonusaufgabe3(playlist: DynamicPlaylist){
+     //bonus
+    playlist.myPlayAll()
+    readLine()
+    playlist.addSorted(Song("S1","",60,200),SortByBew())
+    playlist.myPlayAll()
+    readLine()
+    playlist.addSorted(Song("S2","",60,0),SortByName())
+    playlist.myPlayAll()
+    readLine()
+}

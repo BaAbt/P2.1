@@ -47,6 +47,7 @@ open class Song (
         return (titel.contains(suchbegriff,true) || interpret.contains(suchbegriff,true))
     }
 }
+
 class SongMitText(
     titel: String ,
     interpret: String ,
@@ -55,13 +56,10 @@ class SongMitText(
     val Textfeld: String
 ) : Song (titel,interpret,spieldauer,bewertung){
 
-   override fun suchen(suchbegriff: String): Boolean{
-       return (titel.contains(suchbegriff,true) || interpret.contains(suchbegriff,true) || Textfeld.contains(suchbegriff,true))
-   }
+   override fun suchen(suchbegriff: String): Boolean =
+       super.suchen(suchbegriff) || Textfeld.contains(suchbegriff,true)
 
-    override fun toString(): String {
-        return (super.toString() + "\nText: ${this.Textfeld}")
-    }
+    override fun toString(): String = (super.toString() + "\nText: ${this.Textfeld}")
 }
 class SongMitAutoBewertung(
     titel: String = "",
@@ -73,6 +71,19 @@ class SongMitAutoBewertung(
         bewertung++
         super.abspielen()
     }
+}
+
+//bonusaufgabe
+class SongMitJahr(
+    titel:String,
+    interpret: String,
+    spieldauer: Int,
+    bewertung: Int,
+    var verkaufszahl:Int,
+    val erscheinungsjahr: Int
+):Song(titel,interpret,spieldauer, bewertung){
+    final val aktuellesJahr = 2019.0
+    fun durchschnittVerkauf()= verkaufszahl/(aktuellesJahr-erscheinungsjahr+1)
 }
 
 

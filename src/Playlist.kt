@@ -1,6 +1,6 @@
 import java.util.ArrayList
 
-open class Playlist(val songliste: ArrayList<Song>){
+open class Playlist(var songliste: ArrayList<Song>){
 
     //returns gesamtdauer
     open fun gesamtdauer(): Int{

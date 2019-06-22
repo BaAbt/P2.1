@@ -8,3 +8,7 @@ fun liveaufgabe2(playlist1:Playlist,playlist2:Playlist){
     readLine()
 
 }
+fun liveaufgabe3(){
+    val s1 = SongMitJahr(getTitel(),getInterpret(),getTime(),getBewertung(),1000000,2018)
+    println(s1.durchschnittVerkauf())
+}
