@@ -1,5 +1,9 @@
-interface SortedBinaryTree<E>{
+/*class SortedBinaryTree<E>{
+    var root = EmptyDataNode
+
+
     fun addsorted(element: E){
+        root.addsorted()
 
     }
     fun size():Int{
@@ -11,20 +15,32 @@ interface SortedBinaryTree<E>{
 
 
 //warum nicht emptyDataNode in die DataNode Klasse???
-interface DataNode{
-    abstract  fun addsorted()
+sealed class DataNode<E>{
+    abstract fun size();
+    abstract fun suum()
+    abstract fun contains(value: Int): Boolean
+    abstract fun addsorted(value: E)
+
+    abstract fun processAllInOrder()
+
 }
-class emptyDataNode(): DataNode {
-    override fun addsorted() {
+object EmptyDataNode: DataNode() {
+
+}
+
+private class fullDataNode(): DataNode() {
+    override fun addsorted(input: Any) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
+}*/
+fun main(){
+    lamdatest { println(it) }
 }
 
-class fullDataNode(): DataNode {
-    override fun addsorted() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
+fun lamdatest( f: (a:Int)-> Unit){
+    f(5)
 }
+
+fun add(a:Int,b:Int) = a+b
 
