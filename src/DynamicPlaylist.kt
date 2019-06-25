@@ -104,6 +104,7 @@ class DynamicPlaylist(songliste: ArrayList<Song>): Playlist(songliste), Iterable
         addSong(song)
         val templist = getAllSongs()
         templist.sortWith(comp)
+
         createDynList(templist)
     }
 }
