@@ -1,4 +1,5 @@
 import java.util.*
+import kotlin.collections.ArrayList
 
 fun createMusikverwaltung(songlistLaenge: Int = 20):Musikverwaltung {
     val musikverwaltung = Musikverwaltung()
@@ -25,6 +26,14 @@ fun getTime():Int = Random().nextInt(300)+60
 fun getBewertung():Int = Random().nextInt(100)
 
 fun getText() = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"
+
+fun getXSongs(c:Int): ArrayList<Song>{
+    val a = arrayListOf<Song>()
+    for (b in 1..c){
+        a.add(Song(getTitel(),getInterpret(),getTime(),getBewertung()))
+    }
+    return a
+}
 
 
 

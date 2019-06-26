@@ -88,5 +88,10 @@ class SongComp:Comparator<Song>{
 }
 
 fun main(){
+    val a = getXSongs(10)
+    val root = FullDataNode<Song>(a[0])
+    a.forEach { root.addsorted(it, SongComp()) }
+
+
 }
 
