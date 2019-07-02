@@ -18,6 +18,9 @@ class SortedBinaryTree<E>: Iterable<E>{
         root = EmptyDataNode()
         tempRoot.myForEach { addsorted(it,comp) }
     }
+    fun search(sdata:E, comp: Comparator<E>):DataNode<E>{
+        return root.search(sdata,comp)
+    }
     fun size() = root.size()
 
 
@@ -59,10 +62,14 @@ sealed class DataNode<E>{
     abstract fun addSorted(value: E, comp: Comparator<E>)
     abstract fun paintTree(level: Int=-1)
     abstract fun getFirst():DataNode<E>
+    abstract fun search(sdata: E,comp: Comparator<E>): DataNode<E>
 
 
 }
 class EmptyDataNode<E>: DataNode<E>() {
+    override fun search(sdata: E,comp: Comparator<E>): DataNode<E> {
+        return this
+    }
 
     override fun getFirst(): DataNode<E> = this
 
@@ -87,6 +94,12 @@ class EmptyDataNode<E>: DataNode<E>() {
 }
 
 private class FullDataNode<E>(val data: E): DataNode<E>() {
+    override fun search(sdata:E, comp: Comparator<E>): DataNode<E> {
+        return if (comp.compare(sdata,data)<0)
+            left.search(sdata,comp)
+        else
+            right.search(sdata, comp)
+    }
 
     override fun getFirst(): DataNode<E> {
         if(left !is EmptyDataNode)
@@ -145,14 +158,17 @@ private class FullDataNode<E>(val data: E): DataNode<E>() {
 
 fun main(){
     val tree = SortedBinaryTree<Song>()
-    for(i in 0..5) {
+    for(i in 0..1000) {
         tree.addsorted(getRandomSong(),SongBewComp())
     }
-    tree.paintTree()
-    tree.sort(SongTitleComp())
-    tree.paintTree()
+    while(tree.search(getRandomSong(),SongBewComp()) !is FullDataNode){
+            tree.addsorted(getRandomSong(),SongBewComp())
+    }
+    //tree.paintTree()
+    //tree.sort(SongTitleComp())
+    //tree.paintTree()
     tree.size()
-    tree.myForEach {  }
+    //tree.myForEach {  }
     //tree.myForEach { println(it.bewertung) }
     //println("Size: "+tree.size())
     //println("Spieldauer: " + tree.sumBy { it.spieldauer })
