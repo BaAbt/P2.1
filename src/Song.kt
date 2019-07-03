@@ -1,10 +1,13 @@
 open class Song (
     val titel: String,
-    val interpret: String,
+    private val interpret: String,
     val spieldauer: Int,
-    bewertung: Int
-)
+    bewertung: Int,
+    val comp: Comparator<Song>
+): Comparable<Song>
 {
+    override fun compareTo(other: Song): Int = comp.compare(this, other)
+
     companion object{
         const val MAX_BEW = 100
         const val MIN_BEW = 0
@@ -32,7 +35,7 @@ open class Song (
     }
 
     //Methode, um Minuten wiederzugeben
-    fun zuMinuten() =  spieldauer/60
+    private fun zuMinuten() =  spieldauer/60
 
     //spielt für jede minute einmal die Nachricht
     open fun abspielen(){
@@ -49,12 +52,13 @@ open class Song (
 }
 
 class SongMitText(
-    titel: String ,
-    interpret: String ,
+    titel: String,
+    interpret: String,
     spieldauer: Int,
     bewertung: Int,
-    val Textfeld: String
-) : Song (titel,interpret,spieldauer,bewertung){
+    private val Textfeld: String,
+    comp: Comparator<Song>
+) : Song (titel,interpret,spieldauer,bewertung,comp){
 
    override fun suchen(suchbegriff: String): Boolean =
        super.suchen(suchbegriff) || Textfeld.contains(suchbegriff,true)
@@ -65,8 +69,9 @@ class SongMitAutoBewertung(
     titel: String = "",
     interpret: String = "",
     spieldauer: Int,
-    bewertung: Int
-    ): Song(titel,interpret, spieldauer, bewertung){
+    bewertung: Int,
+    comp: Comparator<Song>
+    ): Song(titel,interpret, spieldauer, bewertung,comp){
     override fun abspielen(){
         bewertung++
         super.abspielen()
@@ -79,10 +84,11 @@ class SongMitJahr(
     interpret: String,
     spieldauer: Int,
     bewertung: Int,
-    var verkaufszahl:Int,
-    val erscheinungsjahr: Int
-):Song(titel,interpret,spieldauer, bewertung){
-    final val aktuellesJahr = 2019.0
+    private var verkaufszahl:Int,
+    private val erscheinungsjahr: Int,
+    comp: Comparator<Song>
+):Song(titel,interpret,spieldauer, bewertung,comp){
+    private val aktuellesJahr = 2019.0
     fun durchschnittVerkauf()= verkaufszahl/(aktuellesJahr-erscheinungsjahr+1)
 }
 

@@ -27,10 +27,10 @@ fun bonusaufgabe3(playlist: DynamicPlaylist){
      //bonus
     playlist.myPlayAll()
     readLine()
-    playlist.addSorted(Song("S1","",60,200),SortByBew())
+    playlist.addSorted(Song("S1","",60,200,SongBewComp()),SortByBew())
     playlist.myPlayAll()
     readLine()
-    playlist.addSorted(Song("S2","",60,0),SortByName())
+    playlist.addSorted(Song("S2","",60,0,SongBewComp()),SortByName())
     playlist.myPlayAll()
     readLine()
 }

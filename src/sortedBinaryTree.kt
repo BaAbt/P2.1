@@ -1,7 +1,9 @@
 import java.util.*
 import kotlin.Comparator
+//TODO entfernen, wird nicht mehr gebraucht
 
 
+/*
 class SortedBinaryTree<E>: Iterable<E>{
 
     var root: Node<E> = EmptyNode
@@ -205,3 +207,4 @@ fun main(){
 }
 
 
+*/

@@ -9,6 +9,6 @@ fun liveaufgabe2(playlist1:Playlist,playlist2:Playlist){
 
 }
 fun liveaufgabe3(){
-    val s1 = SongMitJahr(getTitel(),getInterpret(),getTime(),getBewertung(),1000000,2018)
+    val s1 = SongMitJahr(getTitel(),getInterpret(),getTime(),getBewertung(),1000000,2018,SongBewComp())
     println(s1.durchschnittVerkauf())
 }

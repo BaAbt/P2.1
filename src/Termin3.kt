@@ -23,7 +23,7 @@ fun termin3(){
     playlist2.spieleAlle()
 
     println("\n\nErstelle SongmitText")
-    val song = SongMitText(getTitel(),getInterpret(),getTime(),getBewertung(), getText())
+    val song = getRandomSong()
     musikverwaltung.hinzufuegen(song)
     println(musikverwaltung.suche("Lorem ipsum"))
 
