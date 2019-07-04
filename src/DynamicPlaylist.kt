@@ -86,7 +86,7 @@ class DynamicPlaylist(songliste: ArrayList<Song>): Playlist(songliste), Iterable
 
 
     //bonusaufgabe
-    fun getAllSongs():ArrayList<Song>{
+    private fun getAllSongs():ArrayList<Song>{
         val list = arrayListOf<Song>()
         var i:SongNode? = first
         while(i!= null){
@@ -109,12 +109,12 @@ class DynamicPlaylist(songliste: ArrayList<Song>): Playlist(songliste), Iterable
     }
 }
 
-class SortByBew(): Comparator<Song>{
+class SortByBew: Comparator<Song>{
     override fun compare(p0: Song?, p1: Song?): Int {
         return (p0?.bewertung ?: 0) - (p1?.bewertung ?: 0)
     }
 }
-class SortByName(): Comparator<Song>{
+class SortByName: Comparator<Song>{
     override fun compare(p0: Song?, p1: Song?): Int {
         return (p0?.titel?.compareTo(p1?.titel?:"")?: 0)
     }

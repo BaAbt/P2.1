@@ -1,32 +1,3 @@
-
-class SongTreeContainerTest {
-
-    fun testAddSorted() {
-    }
-
-    fun testSize() {
-    }
-
-    fun testSpieldauer() {
-    }
-
-    fun testForEachSong() {
-    }
-
-    fun testSumBy() {
-    }
-
-    fun testClear() {
-    }
-
-    fun testHeight() {
-    }
-
-    fun testToString() {
-    }
-}
-
-
 fun main(){
     Creator.changComperator(SongTitleComp())
     val tree = SongTreeContainer()
@@ -36,8 +7,9 @@ fun main(){
     println(tree)
     readLine()
     println("size: ${tree.size()}")
-    //println("height: ${tree.height()}")
+    println("height: ${tree.height()}")
     println("spieldauer: ${tree.spieldauer() } ")
+    println("Sumby Bewertung: ${tree.sumBy { it.bewertung }}")
     println("Charakter zum Testen:")
     val c: String = readLine()?:"A"
     println("Anzahl der Songs, die mit $c starten: ${tree.size { it.titel.startsWith(c) }}")

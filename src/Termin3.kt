@@ -24,6 +24,7 @@ fun termin3(){
 
     println("\n\nErstelle SongmitText")
     val song = Creator.getRandomSong()
+
     musikverwaltung.hinzufuegen(song)
     println(musikverwaltung.suche("Lorem ipsum"))
 

@@ -1,4 +1,3 @@
-import java.awt.print.Printable
 
 /*
 Versuch eine generische ANode - Struktur zu bauen.
@@ -34,14 +33,14 @@ data class DataNode<E>(
 
 
 //gibt einen DataNode mit dem eingefügten DataNode zurück
-fun<E: Comparable<E>> add(node: ANode<E>, data: E):DataNode<E> = when (node) {
+fun<E: Comparable<E>> ANode<E>.add(data: E):DataNode<E> = when (this) {
     !is DataNode -> DataNode(data)
     else -> {
-        if (data < node.data)
-            node.left = add(node.left, data)
+        if (data < this.data)
+            this.left = this.left.add(data)
         else
-            node.right =add(node.right, data)
-        node
+            this.right =this.right.add(data)
+        this
     }
 }
 
@@ -51,14 +50,6 @@ fun<E> ANode<E>.size():Int = when(this){
     else -> 0
 }
 
-fun<E: Comparable<E>> search(node: ANode<E>,data: E):ANode<E> = when(node){
-    is EmptyNode -> node
-    is DataNode<E> -> when{
-        data < node.data -> search(node.left,data)
-        data > node.data -> search(node.right,data)
-        else -> node
-    }
-}
 
 fun<E> ANode<E>.size (cond : (element:E) -> Boolean): Int = when(this){
     !is DataNode<E> -> 0
@@ -84,9 +75,8 @@ fun <E> ANode<E>.sumBy(selector: (E) -> Int):Int{
 }
 
 
-//TODO funktioniert im moment nicht, fixen
 fun <E> ANode<E>.height(currentHeight: Int): Int {
-    if(this !is DataNode) return 0
+    if(this !is DataNode) return currentHeight
     return if (left.height(currentHeight + 1) > right.height(currentHeight + 1))
         left.height(currentHeight + 1)
     else
@@ -105,7 +95,7 @@ fun <E: Comparable<E>> ANode<E>.contains( data:E) : Boolean = when(this){
 
 
 fun <E>ANode<E>.painting(level: Int = 0):String {
-    var s: String = ""
+    var s = ""
     repeat(times = level){ s += "\t"  }
     s += when(this){
         !is DataNode -> "-\n"

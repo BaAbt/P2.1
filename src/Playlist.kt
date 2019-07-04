@@ -21,10 +21,10 @@ open class Playlist(var songliste: ArrayList<Song>){
 
     //Bonusaufgabe
     fun returnSongAtIndex(a: Int): Song? {
-        if(a in 0 until songliste.size)
-            return songliste[a]
+        return if(a in 0 until songliste.size)
+            songliste[a]
         else
-            return null
+            null
 
     }
 }

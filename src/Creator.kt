@@ -48,7 +48,7 @@ object Creator {
     }
 
     fun getInterpret(): String {
-        val interpret = arrayListOf<String>(
+        val interpret = arrayListOf(
             "der Hügel",
             "Theo mit dem langen Wurm",
             "Bran Sehnichts",
@@ -85,6 +85,8 @@ object Creator {
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"
 
     fun getRandomSong() = Song(getTitel(), getInterpret(), getTime(), getBewertung(), comp)
+
+    fun getRandomSongwithText() = SongMitText(getTitel(), getInterpret(), getTime(), getBewertung(), getText(),comp)
 
     fun changComperator(tempcomp:Comparator<Song>){comp=tempcomp}
 

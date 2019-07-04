@@ -1,7 +1,7 @@
 class SongTreeContainer {
     private var root : ANode<Song> = EmptyNode
 
-    fun addSorted(s:Song){ root = add(root,s)}
+    fun addSorted(s:Song){ root = root.add(s)}
 
     fun size() = root.size()
 

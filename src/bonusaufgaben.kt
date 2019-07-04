@@ -33,4 +33,5 @@ fun bonusaufgabe3(playlist: DynamicPlaylist){
     playlist.addSorted(Song("S2","",60,0,SongBewComp()),SortByName())
     playlist.myPlayAll()
     readLine()
+    Creator.getRandomSongwithText()
 }
