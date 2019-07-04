@@ -51,9 +51,6 @@ fun<E> ANode<E>.size():Int = when(this){
     else -> 0
 }
 
-//gibt den den gesuchten Node zurück, oder EmptyNode, falls keiner gefunden ist
-//im moment in quarantäne
-/*
 fun<E: Comparable<E>> search(node: ANode<E>,data: E):ANode<E> = when(node){
     is EmptyNode -> node
     is DataNode<E> -> when{
@@ -62,7 +59,18 @@ fun<E: Comparable<E>> search(node: ANode<E>,data: E):ANode<E> = when(node){
         else -> node
     }
 }
- */
+
+fun<E> ANode<E>.size (cond : (element:E) -> Boolean): Int = when(this){
+    !is DataNode<E> -> 0
+    else -> this.left.size(cond) + right.size(cond) +
+            if(cond(this.data)) 1 else 0
+}
+
+
+
+
+
+
 fun <E> ANode<E>.forEach(f : (element : E) -> Unit){
     if (this !is DataNode) return
     this.left.forEach(f)

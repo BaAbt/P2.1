@@ -1,6 +1,6 @@
 fun termin2(){
     //erstelle eine playlist mit den ersten drei songs und eine zufällige aus der creator klasse
-    val musikverwaltung = createMusikverwaltung()
+    val musikverwaltung = Creator.createMusikverwaltung()
     val playlist1 =Playlist(arrayListOf(musikverwaltung.songliste[0],musikverwaltung.songliste[1],musikverwaltung.songliste[2]))
     val playlist2 = musikverwaltung.zufaelligePlaylist()
 

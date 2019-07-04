@@ -15,7 +15,10 @@ class SongTreeContainer {
 
     fun height() = root.height(0)
 
+    fun size(cond: (song:Song) -> Boolean) = root.size(cond)
+
     override fun toString(): String {
         return root.painting()
     }
+
 }

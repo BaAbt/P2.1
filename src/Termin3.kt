@@ -5,7 +5,7 @@ fun termin3(){
     readLine()
 
 
-    val musikverwaltung = createMusikverwaltung(10)
+    val musikverwaltung = Creator.createMusikverwaltung(10)
     val playlist1 = musikverwaltung.zufaelligePlaylist()
     val playlist2 = DynamicPlaylist(playlist1.songliste)
 
@@ -23,7 +23,7 @@ fun termin3(){
     playlist2.spieleAlle()
 
     println("\n\nErstelle SongmitText")
-    val song = getRandomSong()
+    val song = Creator.getRandomSong()
     musikverwaltung.hinzufuegen(song)
     println(musikverwaltung.suche("Lorem ipsum"))
 
